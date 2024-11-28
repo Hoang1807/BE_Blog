@@ -71,7 +71,7 @@ public class BlogService {
 		try {
 			String url = existingBlog.get().getAnh();
 			if (Objects.nonNull(updatedBlog.getFile())) {
-				if(Objects.nonNull(url)) {
+				if (Objects.nonNull(url)) {
 					FileUtils.deleteFile(url);
 				}
 				url = FileUtils.writeFile(updatedBlog.getFile());
@@ -93,7 +93,9 @@ public class BlogService {
 		if (blogOptional.isEmpty()) {
 			return "Bài viết không tồn tại.";
 		}
-		return blogOptional.get();
+
+		return new BlogResponseDTO(blogOptional.get().getMa(), blogOptional.get().getTieuDe(),
+				blogOptional.get().getNoiDung(), blogOptional.get().getAnh());
 	}
 
 	public Object findByIdUser(String email) {
