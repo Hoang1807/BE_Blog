@@ -1,0 +1,27 @@
+CREATE DATABASE asm_blog
+GO
+USE asm_blog
+GO
+CREATE TABLE Users(
+	email VARCHAR(50) PRIMARY KEY,
+	ho_ten NVARCHAR(255) NOT NULL,
+	mat_khau VARCHAR(255) NOT NULL,
+	anh VARCHAR(255) NULL,
+)
+GO
+CREATE TABLE Blog(
+	ma INT IDENTITY(1,1) PRIMARY KEY,
+	tieu_de NVARCHAR(255) NOT NULL,
+	noi_dung NVARCHAR(MAX) NOT NULL,
+	anh VARCHAR(255) NOT NULL,
+	email VARCHAR(50) FOREIGN KEY REFERENCES Users(email),
+	thoi_gian datetime NOT NULL
+)
+GO
+CREATE TABLE Comment(
+	email VARCHAR(50) FOREIGN KEY REFERENCES Users(email),
+	ma INT FOREIGN KEY REFERENCES Blog(ma),
+	thoi_gian datetime NOT NULL,
+	noi_dung NVARCHAR(MAX) NOT NULL,
+	PRIMARY KEY(email,ma)
+)
