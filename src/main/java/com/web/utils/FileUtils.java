@@ -13,21 +13,21 @@ import org.springframework.web.multipart.MultipartFile;
 public class FileUtils {
 
 	public static String writeFile(MultipartFile multipartFile) throws IOException {
-	    String uploadPath = System.getProperty("app.upload.dir", "uploads");
-	    
-	    File uploadDir = new File(uploadPath);
-	    if (!uploadDir.exists()) {
-	        uploadDir.mkdirs();
-	    }
+		String uploadPath = System.getProperty("app.upload.dir", "uploads");
 
-	    String fileName = UUID.randomUUID().toString() + ".jpg";
-	    String filePath = uploadPath + File.separator + fileName;
-	    FileCopyUtils.copy(multipartFile.getBytes(), new File(filePath));
-	    return fileName;
+		File uploadDir = new File(uploadPath);
+		if (!uploadDir.exists()) {
+			uploadDir.mkdirs();
+		}
+
+		String fileName = UUID.randomUUID().toString() + ".jpg";
+		String filePath = uploadPath + File.separator + fileName;
+		FileCopyUtils.copy(multipartFile.getBytes(), new File(filePath));
+		return fileName;
 	}
 
-
 	public static boolean deleteFile(String fileName) {
+		System.out.println("Xóa file " + fileName);
 		// Lấy thư mục làm việc hiện tại
 		String uploadPath = System.getProperty("app.upload.dir", "uploads");
 

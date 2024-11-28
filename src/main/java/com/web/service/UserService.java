@@ -63,9 +63,6 @@ public class UserService {
 			user.setHoTen(updatedUser.getHoTen());
 			String encryptPassword = passwordEncoder.encode(updatedUser.getMatKhau());
 			user.setMatKhau(encryptPassword);
-			if (Objects.nonNull(user.getAnh())) {
-				FileUtils.deleteFile(user.getAnh().replace("uploads/", ""));
-			}
 			user.setAnh(url);
 			usersRepository.save(user);
 			return user;
