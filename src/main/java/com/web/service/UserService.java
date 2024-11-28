@@ -66,7 +66,6 @@ public class UserService {
 			if (Objects.nonNull(user.getAnh())) {
 				FileUtils.deleteFile(user.getAnh().replace("uploads/", ""));
 			}
-			user.setAnh(updatedUser.getAnh());
 			user.setAnh(url);
 			usersRepository.save(user);
 			return user;
