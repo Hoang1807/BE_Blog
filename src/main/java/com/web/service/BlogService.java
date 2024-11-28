@@ -72,7 +72,7 @@ public class BlogService {
 			String url = existingBlog.get().getAnh();
 			if (Objects.nonNull(updatedBlog.getFile())) {
 				if(Objects.nonNull(url)) {
-					FileUtils.deleteFile(url.replace("uploads/", ""));
+					FileUtils.deleteFile(url);
 				}
 				url = FileUtils.writeFile(updatedBlog.getFile());
 			}

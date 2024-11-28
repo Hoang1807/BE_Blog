@@ -55,7 +55,7 @@ public class UserService {
 			String url = existingUser.get().getAnh();
 			if (Objects.nonNull(updatedUser.getFile())) {
 				if(Objects.nonNull(url)) {
-					FileUtils.deleteFile(url.replace("uploads/", ""));
+					FileUtils.deleteFile(url);
 				}
 				url = FileUtils.writeFile(updatedUser.getFile());
 			}
