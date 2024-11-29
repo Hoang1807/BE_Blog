@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class CommentDTO {
 
-	private String email;
+	private String email;	
 	private Integer blogId;
 	private Date thoiGian;
 	private String noiDung;

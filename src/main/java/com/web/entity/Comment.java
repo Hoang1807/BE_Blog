@@ -8,6 +8,9 @@ import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
@@ -18,7 +21,7 @@ import jakarta.persistence.TemporalType;
 @Table(name = "Comment")
 public class Comment {
 
-	private CommentId id;
+	private Integer id;
 	private Blog blog;
 	private Users users;
 	private Date thoiGian;
@@ -27,7 +30,7 @@ public class Comment {
 	public Comment() {
 	}
 
-	public Comment(CommentId id, Blog blog, Users users, Date thoiGian, String noiDung) {
+	public Comment(Integer id, Blog blog, Users users, Date thoiGian, String noiDung) {
 		this.id = id;
 		this.blog = blog;
 		this.users = users;
@@ -35,16 +38,14 @@ public class Comment {
 		this.noiDung = noiDung;
 	}
 
-	@EmbeddedId
-
-	@AttributeOverrides({
-			@AttributeOverride(name = "email", column = @Column(name = "email", nullable = false, length = 50)),
-			@AttributeOverride(name = "ma", column = @Column(name = "ma", nullable = false)) })
-	public CommentId getId() {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
+	public Integer getId() {
 		return this.id;
 	}
 
-	public void setId(CommentId id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

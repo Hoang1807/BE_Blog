@@ -66,22 +66,4 @@ public class UserController {
 		}
 		return ResponseEntity.ok(result);
 	}
-
-	@GetMapping("/uploads/{fileName}")
-	public ResponseEntity<Resource> getFile(@PathVariable String fileName) {
-		try {
-			Path filePath = Paths.get("uploads").resolve(fileName).normalize();
-			Resource resource = new UrlResource(filePath.toUri());
-
-			if (resource.exists()) {
-				return ResponseEntity.ok()
-						.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + fileName + "\"")
-						.body(resource);
-			} else {
-				return ResponseEntity.notFound().build();
-			}
-		} catch (Exception e) {
-			return ResponseEntity.internalServerError().build();
-		}
-	}
 }

@@ -19,9 +19,10 @@ CREATE TABLE Blog(
 )
 GO
 CREATE TABLE Comment(
+	id INT IDENTITY(1,1),
 	email VARCHAR(50) FOREIGN KEY REFERENCES Users(email),
 	ma INT FOREIGN KEY REFERENCES Blog(ma),
 	thoi_gian datetime NOT NULL,
 	noi_dung NVARCHAR(MAX) NOT NULL,
-	PRIMARY KEY(email,ma)
+	PRIMARY KEY(id)
 )
