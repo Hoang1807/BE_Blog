@@ -50,7 +50,7 @@ public class Comment {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "ma", nullable = false, insertable = false, updatable = false)
+	@JoinColumn(name = "ma", nullable = false)
 	public Blog getBlog() {
 		return this.blog;
 	}
@@ -60,7 +60,7 @@ public class Comment {
 	}
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "email", nullable = false, insertable = false, updatable = false)
+	@JoinColumn(name = "email", nullable = false)
 	public Users getUsers() {
 		return this.users;
 	}
